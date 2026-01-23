@@ -4,13 +4,13 @@ import { useState } from 'react';
 import Link from 'next/link'
 import Clock from './Clock'
 import Image from 'next/image'
-import imageone from '../public/imageone.jpg'
-import imagetwo from '../public/imagetwo.jpg'
-import imagethree from '../public/image3.jpg'
+import imageone from '../public/autospaceprtf.png'
+import imagetwo from '../public/shoeboxprtf.jpg'
+import imagethree from '../public/zanpadprtf.jpg'
 import Shuffle from '../components/Shuffle';
 import CurtainFooter from './Footer'
 import LogoLoop from './LogoLoop';
-import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiMongodb, SiJavascript, SiExpress, SiNodedotjs } from 'react-icons/si';
+import { SiReact, SiNextdotjs, SiTypescript, SiTailwindcss, SiMongodb, SiJavascript, SiExpress, SiNodedotjs, SiPostgresql, SiRabbitmq, SiRedis } from 'react-icons/si';
 import { FiDownload } from 'react-icons/fi';
 
 const techLogos = [
@@ -24,6 +24,9 @@ const techLogos = [
     { node: <SiJavascript color='#ffffff' />, title: "Javascript", href: "https://www.javascript.com/" },
     { node: <SiExpress color='#ffffff' />, title: "exoress", href: "https://expressjs.com/" },
     { node: <SiNodedotjs color='#ffffff' />, title: "Nodejs", href: "https://nodejs.org/en" },
+    { node: <SiPostgresql color='#ffffff' />, title: "PostgreSQL", href: "https://www.postgresql.org/" },
+    { node: <SiRabbitmq color='#ffffff' />, title: "RabbitMQ", href: "https://www.rabbitmq.com/" },
+    { node: <SiRedis color='#ffffff' />, title: "Redis", href: "https://redis.io/" },
 
 ];
 
@@ -37,38 +40,38 @@ const imageLogos = [
 const projects = [
     {
         id: 1,
-        title: "Harmony Mixed-Use Complex",
-        category: "Mixed-Use Urban Development",
+        title: "Autospace",
+        category: "Automotive Technology",
         image: imageone,
-        description: "A mixed-use development seamlessly integrating residential, commercial, and recreational spaces. The design focuses on sustainability and community living, creating a vibrant ecosystem for residents and visitors.",
-        location: "Dubai, UAE",
-        date: "Apr 11, 2022",
-        tags: ["450,000 SQ.FT", "SUSTAINABLE DESIGN", "SMART BUILDING", "URBAN LANDMARK"],
-        link: "#",
+        slug: "autospace",
+        description: "A multi-tenant car parking management platform with role-based workflows for owners, managers, and valets.",
+        location: "San Francisco, USA",
+        date: "2024",
+        tags: ["UI/UX", "IoT", "React"],
         visuals: "3 visuals"
     },
     {
         id: 2,
-        title: "Urban Oasis",
-        category: "Residential Architecture",
-        image: imagethree,
-        description: "Sustainable living spaces designed for modern urban lifestyles with a focus on community and nature. Featuring green roofs, solar energy integration, and open communal areas.",
-        location: "London, UK",
-        date: "Dec 10, 2023",
-        tags: ["200,000 SQ.FT", "GREEN LIVING", "COMMUNITY"],
-        link: "#",
+        title: "Shoebox",
+        category: "E-commerce Experience",
+        image: imagetwo,
+        slug: "shoebox",
+        description: "A niche e-commerce platform focused on footwear discovery, catalog management, and seamless checkout experiences.",
+        location: "Berlin, Germany",
+        date: "2024",
+        tags: ["E-Commerce", "Next.js", "Stripe"],
         visuals: "5 visuals"
     },
     {
         id: 3,
-        title: "Skyline Tower",
-        category: "Commercial High-rise",
-        image: imagetwo,
-        description: "A modern skyscraper redefining the city skyline. Features smart office spaces, a luxury hotel, and a rooftop observation deck.",
-        location: "New York, USA",
-        date: "Jan 15, 2024",
-        tags: ["500,000 SQ.FT", "MODERN ARCHITECTURE", "LUXURY"],
-        link: "#",
+        title: "Zanpad",
+        category: "Productivity",
+        image: imagethree,
+        slug: "zanpad",
+        description: "A lightweight Next.js note-taking application for creating, organizing, and persisting personal notes.",
+        location: "Remote",
+        date: "2025",
+        tags: ["SaaS", "Productivity", "Minimalism"],
         visuals: "4 visuals"
     }
 ];
@@ -78,7 +81,8 @@ import Particles from './Particles'; // Import Particles
 // ... existing imports
 
 const HomePage = () => {
-    const [selectedProject, setSelectedProject] = useState<any>(null);
+    // const [selectedProject, setSelectedProject] = useState<any>(null); // Removed modal state
+    const [hoveredProject, setHoveredProject] = useState<number | null>(null);
     const [visibleCount, setVisibleCount] = useState(6);
 
     const visibleProjects = projects.slice(0, visibleCount);
@@ -114,13 +118,13 @@ const HomePage = () => {
                     <div className="relative z-10 w-full h-full flex flex-col pointer-events-none">
 
 
-                        <div className="h-[50%] w-full flex flex-col  md:px-5 justify-center pointer-events-auto">
-                            <h1 className="w-full text-black font-bold leading-none fontTitle
+                        <div className="h-[50%] w-full flex flex-col items-center md:px-5 justify-center pointer-events-auto">
+                            <h1 className="w-full text-center text-black font-bold leading-none fontTitle
                         text-[90px] xs:text-[110px] sm:text-[130px] md:text-[168px] ">
                                 MUHD <span className="md:hidden block "></span> RASHID
                             </h1>
                             {/* <h2 className='md:px-5 text-2xl font-bold fontTitle '>Web Developer</h2> */}
-                            <div className='text-2xl  fontCode pl-5'>
+                            <div className='text-2xl fontCode text-center mt-2'>
 
                                 <Shuffle
                                     text="Full Stack Developer"
@@ -138,6 +142,24 @@ const HomePage = () => {
                                     respectReducedMotion={true}
                                 />
                             </div>
+
+                            {/* <Link
+                                href="/"
+                                className="
+                                    relative inline-block w-fit font-bold text-xl fontHeading 
+                                    text-black underline px-1  hover:no-underline z-0
+                                    transition-colors duration-300
+                                    hover:text-white 
+                                    mt-8
+                                    after:content-[''] after:absolute after:left-0 after:bottom-0
+                                    after:w-full after:h-full after:bg-black after:origin-bottom
+                                    after:scale-y-0 after:block after:transition-transform after:duration-600
+                                    after:z-[-1]
+                                    hover:after:scale-y-100
+                                "
+                            >
+                                <span className="relative z-10">More about me</span>
+                            </Link> */}
                         </div>
 
                         <div className="h-[50%] w-full flex justify-between 
@@ -153,22 +175,6 @@ const HomePage = () => {
                                     and performance. I love turning ideas into real, functional products and
                                     continuously improving my craft through learning and building.
                                 </p>
-                                <Link
-                                    href="/"
-                                    className="
-        relative inline-block w-fit font-bold text-xl fontHeading 
-        text-black underline px-1  hover:no-underline z-0
-        transition-colors duration-300
-        hover:text-white 
-        after:content-[''] after:absolute after:left-0 after:bottom-0
-        after:w-full after:h-full after:bg-black after:origin-bottom
-        after:scale-y-0 after:block after:transition-transform after:duration-600
-        after:z-[-1]
-        hover:after:scale-y-100
-    "
-                                >
-                                    <span className="relative z-10">More about me</span>
-                                </Link>
 
 
 
@@ -201,7 +207,7 @@ const HomePage = () => {
                                 </Link>
 
                                 <Link
-                                    href="/"
+                                    href="mailto:rashiee973@gmail.com"
                                     className="
         relative inline-block w-fit font-bold text-xl fontHeading 
         text-black underline px-1  hover:no-underline z-0
@@ -319,132 +325,65 @@ const HomePage = () => {
                 </div>
 
 
-                <section className='w-full h-auto bg-white rounded-t-[30px] pt-10 pb-0'>
-                    <div className='flex flex-col px-6 md:px-10 gap-2'>
+                <section className='w-full min-h-screen bg-white rounded-t-[30px] pt-20 pb-20 relative overflow-hidden'>
+
+                    {/* Floating Image Preview - Positioned Absolute */}
+                    <div className="hidden lg:block absolute top-[20%] right-[10%] z-0 h-[55%] w-[30%] pointer-events-none">
+                        {projects.map((project) => (
+                            <div
+                                key={project.id}
+                                className={`
+                                    absolute inset-0 w-full h-full transition-all duration-700 ease-out
+                                    ${hoveredProject === project.id ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'}
+                                `}
+                            >
+                                <Image
+                                    src={project.image}
+                                    alt={project.title}
+                                    fill
+                                    className="object-cover rounded-xl shadow-2xl"
+                                    priority
+                                />
+                            </div>
+                        ))}
+                    </div>
+
+                    <div className='flex flex-col px-6 md:px-10 gap-2 relative z-10'>
                         <div className='relative flex justify-center mt-10 '>
                             <div className="absolute top-3/4 left-0 w-full border-t border-black"></div>
                         </div>
                         <p className='text-5xl font-bold my-8 fontHeading'>Projects</p>
 
-                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border-t border-l border-black">
-                            {visibleProjects.map((project) => (
-                                <div
-                                    key={project.id}
-                                    onClick={() => setSelectedProject(project)}
-                                    className="
-                                        relative
-                                        bg-white
-                                        border-r border-b border-black
-                                        p-8
-                                        flex flex-col items-center justify-center
-                                        min-h-[450px]
-                                        cursor-pointer
-                                        group
-                                        transition-all duration-300
-                                        hover:rounded-[40px]
-                                        hover:shadow-2xl
-                                        hover:z-10
-                                        hover:border-transparent
-                                    "
-                                >
-                                    <div className="w-full max-w-[320px] aspect-square mb-8 overflow-hidden relative">
-                                        <Image
-                                            src={project.image}
-                                            alt={project.title}
-                                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                                        />
+                        <div className="flex flex-col border-t border-black">
+                            {projects.map((project) => (
+                                <Link href={`/projects/${project.slug}`} key={project.id}>
+                                    <div
+                                        className="group w-full lg:w-[55%] py-12 md:py-20 border-b border-black cursor-pointer transition-all duration-300"
+                                        onMouseEnter={() => setHoveredProject(project.id)}
+                                        onMouseLeave={() => setHoveredProject(null)}
+                                    >
+                                        <div className="flex flex-col">
+                                            <h3 className={`
+                                                text-5xl md:text-8xl font-bold uppercase transition-all duration-500 fontTitle
+                                                ${hoveredProject && hoveredProject !== project.id ? 'blur-[3px] opacity-40' : 'opacity-100'}
+                                                group-hover:translate-x-4
+                                            `}>
+                                                {project.title}
+                                            </h3>
+                                            <div className={`
+                                                mt-4 flex flex-col md:flex-row gap-4 md:items-center text-lg text-gray-500 fontPara transition-all duration-500
+                                                ${hoveredProject && hoveredProject !== project.id ? 'opacity-0 blur-[2px]' : 'opacity-100'}
+                                                 group-hover:translate-x-4
+                                            `}>
+                                                <span className="text-black font-medium">{project.category}</span>
+                                            </div>
+                                        </div>
                                     </div>
-
-                                    <h3 className="text-2xl font-bold text-center mb-2">{project.title}</h3>
-                                    <p className="text-gray-500 text-sm mb-6">{project.visuals}</p>
-
-                                    <div className="px-6 py-2 border border-black rounded-full uppercase text-sm font-bold tracking-wide transition-colors group-hover:bg-black group-hover:text-white">
-                                        View Project
-                                    </div>
-                                </div>
+                                </Link>
                             ))}
                         </div>
-
-                        {hasMore && (
-                            <div className="flex justify-center my-12">
-                                <button
-                                    onClick={handleLoadMore}
-                                    className="px-8 py-3 bg-white border border-black rounded-full font-bold hover:bg-black hover:text-white transition-colors"
-                                >
-                                    Load More
-                                </button>
-                            </div>
-                        )}
                     </div>
                 </section>
-
-                {/* Project Modal */}
-                {selectedProject && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
-                        <div className="bg-[#f2f2f2] w-full max-w-6xl h-[85vh] md:h-[80vh] rounded-[20px] overflow-hidden flex flex-col md:flex-row shadow-2xl relative animate-in fade-in zoom-in duration-300">
-
-                            {/* Close Button */}
-                            <button
-                                onClick={() => setSelectedProject(null)}
-                                className="absolute top-6 right-6 z-20 w-10 h-10 bg-white rounded-full flex items-center justify-center font-bold hover:scale-105 transition-transform shadow-md"
-                            >
-                                ✕
-                            </button>
-
-                            {/* Left: Image */}
-                            <div className="w-full md:w-[60%] h-[40%] md:h-full relative bg-gray-200">
-                                <Image
-                                    src={(selectedProject as any).image}
-                                    alt={(selectedProject as any).title}
-                                    fill
-                                    className="object-cover"
-                                />
-                            </div>
-
-                            {/* Right: Details */}
-                            <div className="w-full md:w-[40%] h-full p-8 md:p-12 flex flex-col overflow-y-auto bg-[#F4F4F4]">
-                                <h2 className="text-4xl md:text-5xl font-bold fontTitle mb-6 leading-tight">
-                                    {(selectedProject as any).title}
-                                </h2>
-
-                                <div className="space-y-6 flex-grow">
-                                    <p className="text-lg md:text-xl text-gray-700 leading-relaxed fontPara">
-                                        {(selectedProject as any).description}
-                                    </p>
-
-                                    <div className="py-6 border-t border-gray-300">
-                                        <div className="flex justify-between py-2 border-b border-gray-200">
-                                            <span className="font-bold text-sm uppercase text-gray-500">Location</span>
-                                            <span className="font-medium">{(selectedProject as any).location}</span>
-                                        </div>
-                                        <div className="flex justify-between py-2 border-b border-gray-200">
-                                            <span className="font-bold text-sm uppercase text-gray-500">Type</span>
-                                            <span className="font-medium text-right">{(selectedProject as any).category}</span>
-                                        </div>
-                                        <div className="flex justify-between py-2 border-b border-gray-200">
-                                            <span className="font-bold text-sm uppercase text-gray-500">Date</span>
-                                            <span className="font-medium">{(selectedProject as any).date}</span>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex flex-wrap gap-2">
-                                        {(selectedProject as any).tags.map((tag: string, i: number) => (
-                                            <span key={i} className="px-4 py-1.5 border border-black rounded-full text-xs font-bold uppercase hover:bg-black hover:text-white transition-colors">
-                                                {tag}
-                                            </span>
-                                        ))}
-                                    </div>
-                                </div>
-
-                                <div className="mt-8 pt-6">
-                                    <button className="px-8 py-3 bg-black text-white font-bold rounded-full hover:bg-gray-800 transition-colors w-full md:w-auto">
-                                        LEARN MORE
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
             </main>
         </CurtainFooter >
     )

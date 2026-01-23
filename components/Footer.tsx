@@ -38,47 +38,67 @@ export default function CurtainFooter({ children }: { children: React.ReactNode 
                             href="https://www.linkedin.com/in/rashidpalathingal/"
                             className="
                 relative inline-block font-bold text-xl fontHeading px-1
-                text-white underline hover:no-underline
+                text-white underline hover:no-underline z-0
                 transition-colors duration-300
-                hover:text-gray-300
+                hover:text-black
+                after:content-[''] after:absolute after:left-0 after:bottom-0
+                after:w-full after:h-full after:bg-white after:origin-bottom
+                after:scale-y-0 after:block after:transition-transform after:duration-300
+                after:z-[-1]
+                hover:after:scale-y-100
               "
                         >
-                            <span>Linkedin</span>
+                            <span className="relative z-10">Linkedin</span>
                         </Link>
 
                         <Link
                             href="mailto:rashiee973@gmail.com"
                             className="
                 relative inline-block font-bold text-xl fontHeading px-1
-                text-white underline hover:no-underline
+                text-white underline hover:no-underline z-0
                 transition-colors duration-300
-                hover:text-gray-300
+                hover:text-black
+                after:content-[''] after:absolute after:left-0 after:bottom-0
+                after:w-full after:h-full after:bg-white after:origin-bottom
+                after:scale-y-0 after:block after:transition-transform after:duration-300
+                after:z-[-1]
+                hover:after:scale-y-100
               "
                         >
-                            <span>Email</span>
+                            <span className="relative z-10">Email</span>
                         </Link>
 
                         <Link
                             href="https://www.instagram.com/mhd.rashiee/"
                             className="
                 relative inline-block font-bold text-xl fontHeading px-1
-                text-white underline hover:no-underline
+                text-white underline hover:no-underline z-0
                 transition-colors duration-300
-                hover:text-gray-300
+                hover:text-black
+                after:content-[''] after:absolute after:left-0 after:bottom-0
+                after:w-full after:h-full after:bg-white after:origin-bottom
+                after:scale-y-0 after:block after:transition-transform after:duration-300
+                after:z-[-1]
+                hover:after:scale-y-100
               "
                         >
-                            <span>Instagram</span>
+                            <span className="relative z-10">Instagram</span>
                         </Link>
                         <Link
                             href="https://github.com/rashhiee"
                             className="
                 relative inline-block font-bold text-xl fontHeading px-1
-                text-white underline hover:no-underline
+                text-white underline hover:no-underline z-0
                 transition-colors duration-300
-                hover:text-gray-300
+                hover:text-black
+                after:content-[''] after:absolute after:left-0 after:bottom-0
+                after:w-full after:h-full after:bg-white after:origin-bottom
+                after:scale-y-0 after:block after:transition-transform after:duration-300
+                after:z-[-1]
+                hover:after:scale-y-100
               "
                         >
-                            <span>Github</span>
+                            <span className="relative z-10">Github</span>
                         </Link>
                     </div>
 
