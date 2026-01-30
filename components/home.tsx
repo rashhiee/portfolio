@@ -1,9 +1,7 @@
 'use client';
-
-import { useState } from 'react';
 import Link from 'next/link'
 
-import Image from 'next/image'
+
 
 import Shuffle from '../components/Shuffle';
 
@@ -32,7 +30,6 @@ const imageLogos = [
 // ... existing imports
 
 const HomePage = () => {
-    // const [selectedProject, setSelectedProject] = useState<any>(null); // Removed modal state
 
 
     const containerRef = useRef<HTMLDivElement>(null);
@@ -63,7 +60,7 @@ const HomePage = () => {
     }, { scope: containerRef });
 
     return (
-        <main ref={containerRef} className='bg-white flex flex-col gap-1 relative'>
+        <main ref={containerRef} className='bg-[#E8E8E3] flex flex-col gap-1 relative'>
             {/* Hero Section */}
             <div className="h-[90vh] w-full relative px-6 flex flex-col gap-2">
                 {/* Content */}
