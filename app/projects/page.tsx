@@ -11,114 +11,110 @@ const projects = [
     {
         id: 1,
         title: "Autospace",
-        category: "Automotive Technology",
-        image: imageone,
         slug: "autospace",
-        description:
-            "A multi-tenant car parking management platform with role-based workflows for owners, managers, and valets.",
-        location: "San Francisco, USA",
-        date: "2024",
-        tags: ["UI/UX", "IoT", "React"],
-        visuals: "3 visuals",
+        image: imageone,
+        number: "#01–03"
     },
     {
         id: 2,
         title: "Shoebox",
-        category: "E-commerce Experience",
-        image: imagetwo,
         slug: "shoebox",
-        description:
-            "A niche e-commerce platform focused on footwear discovery, catalog management, and seamless checkout experiences.",
-        location: "Berlin, Germany",
-        date: "2024",
-        tags: ["E-Commerce", "Next.js", "Stripe"],
-        visuals: "5 visuals",
+        image: imagetwo,
+        number: "#04–06"
     },
     {
         id: 3,
         title: "Zanpad",
-        category: "Productivity",
-        image: imagethree,
         slug: "zanpad",
-        description:
-            "A lightweight Next.js note-taking application for creating, organizing, and persisting personal notes.",
-        location: "Remote",
-        date: "2025",
-        tags: ["SaaS", "Productivity", "Minimalism"],
-        visuals: "4 visuals",
+        image: imagethree,
+        number: "#07–09"
     },
+    {
+        id: 4,
+        title: "Portfolio",
+        slug: "portfolio",
+        image: imageone, // Using imageone as a placeholder for the 4th
+        number: "#10–12"
+    }
 ];
 
 export default function ProjectsPage() {
-    const [hoveredProject, setHoveredProject] = useState<number | null>(null);
+    const [hoveredId, setHoveredId] = useState<number | null>(null);
 
     return (
-        <div className="bg-white min-h-screen pt-32 pb-20 relative overflow-hidden">
-            {/* Floating Image Preview - Positioned Absolute */}
-            <div className="hidden lg:block absolute top-[20%] right-[10%] z-0 h-[55%] w-[30%] pointer-events-none">
-                {projects.map((project) => (
-                    <div
-                        key={project.id}
-                        className={`
-                        absolute inset-0 w-full h-full transition-all duration-700 ease-out
-                        ${hoveredProject === project.id ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-10 scale-95'}
-                    `}
-                    >
-                        <Image
-                            src={project.image}
-                            alt={project.title}
-                            fill
-                            className="object-cover rounded-xl shadow-2xl"
-                            priority
-                        />
-                    </div>
-                ))}
-            </div>
+        <main className="bg-[#E8E8E3] lg:h-screen lg:overflow-hidden text-black fontPara selection:bg-black selection:text-white pt-16 md:pt-20 pb-8 flex flex-col justify-center">
+            <div className="max-w-[1600px] mx-auto px-6 md:px-12 w-full flex flex-col md:flex-row gap-8 items-center">
 
-            <div className="flex flex-col px-6 md:px-10 gap-2 relative z-10 max-w-7xl mx-auto">
-                <p className="text-5xl font-bold my-8 fontHeading">Projects</p>
+                {/* Left Side: Sticky Panel */}
+                <aside className="md:w-1/4 h-fit md:sticky md:top-32 flex flex-col gap-8 py-4">
+                    <h1 className="text-2xl font-bold tracking-widest fontHeading">WORK</h1>
 
-                <div className="flex flex-col border-t border-black text-black">
-                    {projects.map((project) => (
-                        <Link href={`/projects/${project.slug}`} key={project.id}>
-                            <div
-                                className="group w-full lg:w-[55%] py-12 md:py-20 border-b border-black cursor-pointer transition-all duration-300"
-                                onMouseEnter={() => setHoveredProject(project.id)}
-                                onMouseLeave={() => setHoveredProject(null)}
+                    <nav className="flex flex-col gap-2">
+                        {projects.map((project) => (
+                            <Link
+                                href={`/projects/${project.slug}`}
+                                key={project.id}
+                                onMouseEnter={() => setHoveredId(project.id)}
+                                onMouseLeave={() => setHoveredId(null)}
+                                className={`
+                                    text-base transition-all duration-300 w-fit font-medium
+                                    ${hoveredId === project.id ? "text-black translate-x-2" : "text-black/30"}
+                                `}
                             >
-                                <div className="flex flex-col">
-                                    <h3
-                                        className={`
-                        text-5xl md:text-8xl font-bold uppercase transition-all duration-500 fontTitle
-                        ${hoveredProject && hoveredProject !== project.id
-                                                ? "blur-[3px] opacity-40"
-                                                : "opacity-100"
-                                            }
-                        group-hover:translate-x-4
-                    `}
-                                    >
+                                {project.title}
+                            </Link>
+                        ))}
+                    </nav>
+                </aside>
+
+                {/* Right Side: Grid */}
+                <div className="md:w-3/4 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-x-10 md:gap-y-8 items-center">
+                    {projects.map((project) => (
+                        <Link
+                            href={`/projects/${project.slug}`}
+                            key={project.id}
+                            className="group relative flex flex-col gap-1.5"
+                            onMouseEnter={() => setHoveredId(project.id)}
+                            onMouseLeave={() => setHoveredId(null)}
+                        >
+                            {/* Metadata */}
+                            <div className="flex justify-between text-[9px] font-bold text-black/50 uppercase tracking-widest px-1">
+                                <span>{project.number}</span>
+                                <span>{project.title.slice(0, 3)}</span>
+                            </div>
+
+                            {/* Image Card */}
+                            <div className={`
+                                relative aspect-[3/2] w-full overflow-hidden transition-all duration-700 ease-in-out
+                                ${hoveredId && hoveredId !== project.id ? "opacity-40 grayscale-[0.3]" : "opacity-100"}
+                            `}>
+                                <Image
+                                    src={project.image}
+                                    alt={project.title}
+                                    fill
+                                    className={`
+                                        object-cover transition-all duration-700 ease-in-out
+                                        ${hoveredId === project.id ? "scale-105 blur-sm brightness-75" : "scale-100"}
+                                    `}
+                                />
+
+                                {/* Hover Overlay Text */}
+                                <div className={`
+                                    absolute inset-0 flex items-center justify-start p-8 transition-opacity duration-500
+                                    ${hoveredId === project.id ? "opacity-100" : "opacity-0"}
+                                `}>
+                                    <h2 className="text-white text-5xl md:text-6xl font-medium fontHeading leading-tight">
                                         {project.title}
-                                    </h3>
-                                    <div
-                                        className={`
-                        mt-4 flex flex-col md:flex-row gap-4 md:items-center text-lg text-gray-500 fontPara transition-all duration-500
-                        ${hoveredProject && hoveredProject !== project.id
-                                                ? "opacity-0 blur-[2px]"
-                                                : "opacity-100"
-                                            }
-                            group-hover:translate-x-4
-                    `}
-                                    >
-                                        <span className="text-black font-medium">
-                                            {project.category}
-                                        </span>
-                                    </div>
+                                    </h2>
                                 </div>
                             </div>
                         </Link>
                     ))}
                 </div>
             </div>
-        </div>
+
+            {/* Background Texture/Noise Overlay (Subtle) */}
+            <div className="fixed inset-0 pointer-events-none opacity-[0.03] mix-blend-overlay bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+        </main>
     );
 }
