@@ -115,7 +115,7 @@ const Shuffle: React.FC<ShuffleProps> = ({
         }
         try {
           splitRef.current?.revert();
-        } catch {}
+        } catch { }
         splitRef.current = null;
         playingRef.current = false;
       };
@@ -149,7 +149,7 @@ const Shuffle: React.FC<ShuffleProps> = ({
 
           const wrap = document.createElement('span');
           wrap.className = 'inline-block overflow-hidden align-baseline text-left';
-          Object.assign(wrap.style, { width: w + 'px' });
+          Object.assign(wrap.style, { width: (w + 0.5) + 'px' });
 
           const inner = document.createElement('span');
           inner.className = 'inline-block whitespace-nowrap will-change-transform origin-left transform-gpu';
@@ -355,7 +355,7 @@ const Shuffle: React.FC<ShuffleProps> = ({
   const baseTw = 'inline-block whitespace-normal break-words will-change-transform  text-2xl leading-none';
   const userHasFont = className && /font[-[]/i.test(className);
 
-  const fallbackFont =  {} 
+  const fallbackFont = {}
 
   const commonStyle: React.CSSProperties = {
     textAlign,

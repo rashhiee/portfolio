@@ -61,12 +61,12 @@ const HomePage = () => {
             <div className="h-[90vh] w-full relative px-6 flex flex-col gap-2">
                 {/* Content */}
                 <div className="relative z-10 w-full h-full flex flex-col pointer-events-none">
-                    <div className="h-[50%] w-full flex flex-col items-center md:px-5 justify-center pointer-events-auto">
-                        <h1 className="w-full text-center text-black font-bold leading-none fontTitle
-                        text-[90px] xs:text-[110px] sm:text-[130px] md:text-[168px] ">
-                            MUHD <span className="md:hidden block "></span> RASHID
+                    <div className="h-[60%] md:h-[50%] w-full flex flex-col items-center px-4 md:px-5 justify-center pointer-events-auto">
+                        <h1 className="w-full text-center text-black font-bold leading-[0.9] fontTitle whitespace-nowrap
+                        text-[36px] xs:text-[48px] sm:text-[64px] md:text-[140px] lg:text-[168px]">
+                            MUHD RASHID
                         </h1>
-                        <div className='text-2xl fontCode text-center mt-2'>
+                        <div className='text-[10px] sm:text-lg md:text-2xl fontCode text-center mt-6 md:mt-2 w-full px-4 break-all'>
                             <Shuffle
                                 text="Full Stack Developer"
                                 shuffleDirection="right"
@@ -89,11 +89,11 @@ const HomePage = () => {
 
             {/* Editorial Section (About + Footer) */}
             <section ref={aboutRef} className="max-w-[1600px] mx-auto px-6 md:px-12 pb-10 text-black w-full">
-                <div className="w-full border-t border-black mb-8 animate-text"></div>
+                <div className="w-full border-t border-black mb-6 md:mb-8 animate-text"></div>
 
                 {/* Large Headline */}
-                <div className="mb-20 animate-text">
-                    <h2 className="text-4xl md:text-7xl font-medium leading-[1.05] tracking-tight fontHeading w-full">
+                <div className="mb-12 md:mb-20 animate-text">
+                    <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-medium leading-[1.1] md:leading-[1.05] tracking-tight fontHeading w-full">
                         Hello world, I&apos;m Muhd Rashid. I&apos;m a full stack developer building scalable, performance-first applications for the modern web.
                     </h2>
                 </div>
@@ -124,26 +124,26 @@ const HomePage = () => {
                 <div className="w-full border-t border-black mb-10 animate-text"></div>
 
                 {/* Bottom Metadata & Socials */}
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-10 items-start animate-text">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-10 items-start animate-text">
                     {/* Social Pills */}
                     <div className="md:col-span-4 flex flex-wrap gap-2">
-                        <Link href="https://www.instagram.com/mhd.rashiee/" className="px-5 py-2 bg-black text-white rounded-full text-[10px] font-bold tracking-widest uppercase hover:bg-black/80 transition-colors">
+                        <Link href="https://www.instagram.com/mhd.rashiee/" className="px-4 md:px-5 py-2 bg-black text-white rounded-full text-[9px] md:text-[10px] font-bold tracking-widest uppercase hover:bg-black/80 transition-colors">
                             Instagram
                         </Link>
-                        <Link href="https://github.com/rashhiee" className="px-5 py-2 bg-black text-white rounded-full text-[10px] font-bold tracking-widest uppercase hover:bg-black/80 transition-colors">
+                        <Link href="https://github.com/rashhiee" className="px-4 md:px-5 py-2 bg-black text-white rounded-full text-[9px] md:text-[10px] font-bold tracking-widest uppercase hover:bg-black/80 transition-colors">
                             GitHub
                         </Link>
-                        <Link href="https://www.linkedin.com/in/rashidpalathingal/" className="px-5 py-2 bg-black text-white rounded-full text-[10px] font-bold tracking-widest uppercase hover:bg-black/80 transition-colors">
+                        <Link href="https://www.linkedin.com/in/rashidpalathingal/" className="px-4 md:px-5 py-2 bg-black text-white rounded-full text-[9px] md:text-[10px] font-bold tracking-widest uppercase hover:bg-black/80 transition-colors">
                             LinkedIn
                         </Link>
                     </div>
 
                     {/* Metadata */}
-                    <div className="md:col-span-4 text-[10px] leading-relaxed tracking-tighter fontHeading">
+                    <div className="md:col-span-4 text-[9px] md:text-[10px] leading-relaxed tracking-tighter fontHeading">
                         <span className="font-bold uppercase">Design •</span> This portfolio features a minimal, editorial aesthetic focused on typography and white space. The primary font is a clean sans-serif for readability and impact.
                     </div>
 
-                    <div className="md:col-span-4 text-[10px] leading-relaxed tracking-tighter fontHeading">
+                    <div className="md:col-span-4 text-[9px] md:text-[10px] leading-relaxed tracking-tighter fontHeading">
                         <span className="font-bold uppercase">Technology •</span> Built with Next.js, Tailwind CSS, and Framer Motion. Hosted on Vercel with automated CI/CD workflows for seamless deployment.
                     </div>
                 </div>

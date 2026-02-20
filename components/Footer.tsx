@@ -13,7 +13,7 @@ export default function CurtainFooter({ children }: { children: React.ReactNode 
       */}
             <div
                 className='relative z-10 bg-black min-h-screen'
-                style={{ marginBottom: '50vh' }}
+                style={{ marginBottom: '60vh' }}
             >
                 {children}
             </div>
@@ -25,19 +25,19 @@ export default function CurtainFooter({ children }: { children: React.ReactNode 
         - Height must match the margin-bottom above
       */}
             <footer
-                className="fixed bottom-0 left-0 w-full h-[50vh] bg-black text-white flex items-center justify-center z-0"
+                className="fixed bottom-0 left-0 w-full h-[60vh] bg-black text-white flex items-center justify-center z-0"
             >
-                <div className="max-w-6xl mx-auto text-center px-8">
-                    <h2 className="text-5xl md:text-7xl font-bold mb-8 fontTitle leading-tight">
+                <div className="max-w-6xl mx-auto text-center px-6 md:px-8 py-10 md:py-0">
+                    <h2 className="text-4xl sm:text-5xl md:text-7xl font-bold mb-6 md:mb-8 fontTitle leading-tight px-4">
                         READY TO COLLAB?<br />
                         REACH ME OUT!
                     </h2>
 
-                    <div className="flex flex-wrap justify-center gap-6 md:gap-8 mb-12 text-lg fontHeading">
+                    <div className="flex flex-wrap justify-center gap-4 sm:gap-6 md:gap-8 mb-8 md:mb-12 text-sm sm:text-base md:text-lg fontHeading">
                         <Link
                             href="https://www.linkedin.com/in/rashidpalathingal/"
                             className="
-                relative inline-block font-bold text-xl fontHeading px-1
+                relative inline-block font-bold text-lg sm:text-xl fontHeading px-1
                 text-white underline hover:no-underline z-0
                 transition-colors duration-300
                 hover:text-black
@@ -54,7 +54,7 @@ export default function CurtainFooter({ children }: { children: React.ReactNode 
                         <Link
                             href="mailto:rashiee973@gmail.com"
                             className="
-                relative inline-block font-bold text-xl fontHeading px-1
+                relative inline-block font-bold text-lg sm:text-xl fontHeading px-1
                 text-white underline hover:no-underline z-0
                 transition-colors duration-300
                 hover:text-black
@@ -71,7 +71,7 @@ export default function CurtainFooter({ children }: { children: React.ReactNode 
                         <Link
                             href="https://www.instagram.com/mhd.rashiee/"
                             className="
-                relative inline-block font-bold text-xl fontHeading px-1
+                relative inline-block font-bold text-lg sm:text-xl fontHeading px-1
                 text-white underline hover:no-underline z-0
                 transition-colors duration-300
                 hover:text-black
@@ -87,7 +87,7 @@ export default function CurtainFooter({ children }: { children: React.ReactNode 
                         <Link
                             href="https://github.com/rashhiee"
                             className="
-                relative inline-block font-bold text-xl fontHeading px-1
+                relative inline-block font-bold text-lg sm:text-xl fontHeading px-1
                 text-white underline hover:no-underline z-0
                 transition-colors duration-300
                 hover:text-black
@@ -102,7 +102,7 @@ export default function CurtainFooter({ children }: { children: React.ReactNode 
                         </Link>
                     </div>
 
-                    <p className="text-sm text-gray-400 fontPara">© MUHD RASHID, 2025</p>
+                    <p className="text-[10px] md:text-sm text-gray-400 fontPara">© MUHD RASHID, 2025</p>
                 </div>
             </footer>
         </div>

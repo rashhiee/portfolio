@@ -42,14 +42,14 @@ export default function ProjectsPage() {
     const [hoveredId, setHoveredId] = useState<number | null>(null);
 
     return (
-        <main className="bg-[#E8E8E3] lg:h-screen lg:overflow-hidden text-black fontPara selection:bg-black selection:text-white pt-16 md:pt-20 pb-8 flex flex-col justify-center">
-            <div className="max-w-[1600px] mx-auto px-6 md:px-12 w-full flex flex-col md:flex-row gap-8 items-center">
+        <main className="bg-[#E8E8E3] lg:h-screen lg:overflow-hidden text-black fontPara selection:bg-black selection:text-white pt-20 md:pt-24 pb-8 flex flex-col justify-center">
+            <div className="max-w-[1600px] mx-auto px-6 md:px-12 w-full flex flex-col md:flex-row gap-8 md:gap-12 items-center md:items-start lg:items-center">
 
                 {/* Left Side: Sticky Panel */}
-                <aside className="md:w-1/4 h-fit md:sticky md:top-32 flex flex-col gap-8 py-4">
-                    <h1 className="text-2xl font-bold tracking-widest fontHeading">WORK</h1>
+                <aside className="w-full md:w-1/4 h-fit md:sticky md:top-32 flex flex-col gap-4 md:gap-8 py-2 md:py-4">
+                    <h1 className="text-xl md:text-2xl font-bold tracking-widest fontHeading">WORK</h1>
 
-                    <nav className="flex flex-col gap-2">
+                    <nav className="flex flex-row md:flex-col gap-4 md:gap-2 overflow-x-auto md:overflow-visible no-scrollbar pb-2 md:pb-0">
                         {projects.map((project) => (
                             <Link
                                 href={`/projects/${project.slug}`}
@@ -57,8 +57,8 @@ export default function ProjectsPage() {
                                 onMouseEnter={() => setHoveredId(project.id)}
                                 onMouseLeave={() => setHoveredId(null)}
                                 className={`
-                                    text-base transition-all duration-300 w-fit font-medium
-                                    ${hoveredId === project.id ? "text-black translate-x-2" : "text-black/30"}
+                                    text-xs md:text-base transition-all duration-300 w-fit font-medium whitespace-nowrap md:whitespace-normal px-2 py-1 bg-black/5 rounded-md md:bg-transparent md:p-0
+                                    ${hoveredId === project.id ? "text-black md:translate-x-2" : "text-black/30"}
                                 `}
                             >
                                 {project.title}
@@ -100,10 +100,11 @@ export default function ProjectsPage() {
 
                                 {/* Hover Overlay Text */}
                                 <div className={`
-                                    absolute inset-0 flex items-center justify-start p-8 transition-opacity duration-500
-                                    ${hoveredId === project.id ? "opacity-100" : "opacity-0"}
+                                    absolute inset-0 flex items-center justify-start p-6 md:p-8 transition-opacity duration-500
+                                    ${hoveredId === project.id ? "opacity-100" : "opacity-0 md:opacity-0"}
+                                    md:group-hover:opacity-100
                                 `}>
-                                    <h2 className="text-white text-5xl md:text-6xl font-medium fontHeading leading-tight">
+                                    <h2 className="text-white text-4xl sm:text-5xl md:text-6xl font-medium fontHeading leading-tight">
                                         {project.title}
                                     </h2>
                                 </div>
