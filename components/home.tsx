@@ -62,9 +62,13 @@ const HomePage = () => {
                 {/* Content */}
                 <div className="relative z-10 w-full h-full flex flex-col pointer-events-none">
                     <div className="h-[60%] md:h-[50%] w-full flex flex-col items-center px-4 md:px-5 justify-center pointer-events-auto">
-                        <h1 className="w-full text-center text-black font-bold leading-[0.9] fontTitle whitespace-nowrap
+                        <h1 className="w-full text-center font-bold leading-[0.9] fontTitle whitespace-nowrap
                         text-[36px] xs:text-[48px] sm:text-[64px] md:text-[140px] lg:text-[168px]">
-                            MUHD RASHID
+                            <span className="text-black">MUHD </span>
+                            <span style={{
+                                color: 'transparent',
+                                WebkitTextStroke: '2px black',
+                            }}>RASHID</span>
                         </h1>
                         <div className='text-[10px] sm:text-lg md:text-2xl fontCode text-center mt-6 md:mt-2 w-full px-4 break-all'>
                             <Shuffle
